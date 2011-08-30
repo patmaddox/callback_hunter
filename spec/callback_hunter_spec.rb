@@ -31,6 +31,13 @@ describe "ActiveRecord::Base.record_callbacks {}" do
     CallbackHunter.callbacks.first.target.should be(model)
   end
 
+  it "records the result of an executed callback" do
+    ActiveRecord::Base.record_callbacks do
+      ModelWithCreateCallback.create!
+    end
+    CallbackHunter.callbacks.first.result.should == "something"
+  end
+
   it "records the benchmark of an executed callback" do
     ActiveRecord::Base.record_callbacks do
       ModelWithCreateCallback.create!

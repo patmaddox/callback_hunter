@@ -35,16 +35,15 @@ ActiveRecord::Base.extend CallbackHunter::ClassMethods
 module ActiveSupport
   module Callbacks
     class Callback
-      attr_reader :target, :benchmark
+      attr_reader :target, :benchmark, :result
 
       def call_with_callback_hunter(*args, &block)
         if should_run_callback?(*args) && CallbackHunter.recording?
           @target = args.first
           CallbackHunter.record(self)
         end
-        result = nil
-        @benchmark = Benchmark.measure { result = call_without_callback_hunter(*args, &block) }
-        result
+        @benchmark = Benchmark.measure { @result = call_without_callback_hunter(*args, &block) }
+        @result
       end
       alias_method_chain :call, :callback_hunter
     end
