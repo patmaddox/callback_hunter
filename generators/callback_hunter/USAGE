@@ -1,8 +1,10 @@
 Description:
-    Explain the generator
+    CallbackHunter provides a nifty little controller for viewing the callbacks that fired
+    during your last recording session. After generating it, add the appropriate routes to
+    config/routes.rb.
 
 Example:
-    ./script/generate callback_hunter Thing
+    ./script/generate callback_hunter HuntedCallbacks
 
     This will create:
-        what/will/it/create
+       app/controllers/hunted_callbacks_controller.rb

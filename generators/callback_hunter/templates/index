@@ -1,0 +1,7 @@
+<h1>Callback Hunter Pro!</h1>
+
+<ul>
+  <%% @callbacks.each_with_index do |callback, i| %>
+    <li><%%= link_to "#{h(callback.target.inspect)} - #{callback.kind} - #{callback.method}", <%= singular_name %>_path(i) %></li>
+  <%% end %>
+</ul>

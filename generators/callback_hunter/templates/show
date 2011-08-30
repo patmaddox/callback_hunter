@@ -1,0 +1,9 @@
+<h1><%%= h(@callback.target.inspect) %> - <%%= @callback.kind %> - <%%= @callback.method %>
+
+<h3>Benchmark: <%%= h(@callback.benchmark) %>
+<h3>Stack trace</h3>
+<ul>
+  <%% @callback.stack_trace.each do |frame| %>
+  <li><%%= frame %></li>
+  <%% end %>
+</ul>

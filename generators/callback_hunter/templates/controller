@@ -1,0 +1,9 @@
+class <%= name.pluralize %>Controller < ActionController::Base
+  def index
+    @callbacks = CallbackHunter.callbacks
+  end
+
+  def show
+    @callback = CallbackHunter.callbacks[params[:id].to_i]
+  end
+end

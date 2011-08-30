@@ -35,11 +35,12 @@ ActiveRecord::Base.extend CallbackHunter::ClassMethods
 module ActiveSupport
   module Callbacks
     class Callback
-      attr_reader :target, :benchmark, :result
+      attr_reader :target, :benchmark, :result, :stack_trace
 
       def call_with_callback_hunter(*args, &block)
         if should_run_callback?(*args) && CallbackHunter.recording?
           @target = args.first
+          @stack_trace = caller[0..-1]
           CallbackHunter.record(self)
         end
         @benchmark = Benchmark.measure { @result = call_without_callback_hunter(*args, &block) }
