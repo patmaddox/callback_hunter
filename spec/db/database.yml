@@ -1,0 +1,3 @@
+sqlite3:
+  :adapter: sqlite3
+  :database: vendor/plugins/callback_hunter/spec/db/callback_hunter.sqlite3.db
